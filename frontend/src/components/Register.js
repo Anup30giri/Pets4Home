@@ -11,7 +11,7 @@ function Register() {
   const [error, seterror] = useState();
   const [success, setsuccess] = useState();
 
-  const [firstname, setfirstname] = useState('')
+  const [firstname, setfirstname] = useState('') // '' this indicates that its initial value is null
   const [lastname, setlastname] = useState('')
   const [email, setemail] = useState('')
   const [phone, setphone] = useState('')
@@ -32,7 +32,7 @@ function Register() {
       }
       try {
         setloading(true)
-        const result = await axios.post('/api/users/register', user).data
+        const result = await axios.post('api/users/register', user).data
         console.log(result)
         setloading(false)
         setsuccess(true)

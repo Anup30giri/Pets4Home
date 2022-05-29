@@ -8,11 +8,11 @@ const userDb=require('../Models/userModel')
 router.post('/register',async(req,res)=>{
     const newuser=new userDb(
         {
-            firstname : req.body.firstname,
-            lastname : req.body.lastname,
+            fullname : req.body.fullname,
+           
             email : req.body.email,
             phone : req.body.phone,
-            username : req.body.username,
+           
             password : req.body.password,
             cpassword : req.body.cpassword,
         }
@@ -21,10 +21,18 @@ router.post('/register',async(req,res)=>{
     try{
         const user=await newuser.save()
         res.send('User registered successfully')
+        console.log(user)
     }
-    catch{
-        return res.status(400).json({error})
+    catch(error){
+        if (error._message == 'users validation failed'){
+            res.write('Fields cannot be empty')
+        }
+        
+        
     }
 })
+
+//user login
+
 
 module.exports = router
