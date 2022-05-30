@@ -18,7 +18,7 @@ const PetScreen = () => {
   const pet = pets.find((p) => p._id === id);
   return (
     <div className="container">
-      <Link className="btn btn-primary my-3" to="/">
+      <Link className="btn btn-dark my-3" to="/">
         Go Back
       </Link>
       <Row>
